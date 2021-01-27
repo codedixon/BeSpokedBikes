@@ -12,5 +12,20 @@ namespace BeSpokedBikes.Models
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime StartDate { get; set; }
+        public List<Customer> allcustomers { get; set; }
+        public Customer()
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Address = Address;
+            this.PhoneNumber = PhoneNumber;
+            this.StartDate = StartDate;
+            allcustomers.Add(this);
+        }
+
+        public List<Customer> displaycustomers()
+        {
+            return allcustomers;
+        }
     }
 }
