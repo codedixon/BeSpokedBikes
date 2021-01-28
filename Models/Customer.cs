@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +8,26 @@ namespace BeSpokedBikes.Models
 {
     public class Customer
     {
-        public int id { get; set; }
+        [Required]
+        public int CustomerId { get; set; }
+
+        [Required]
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
+        [Required]
         public string PhoneNumber { get; set; }
+
+        [Required]
         public DateTime StartDate { get; set; }
+
+        public virtual ICollection<Sale> Sales { get; set; }
+
         public static List<Customer> allcustomers { get; set; }
         public Customer()
         {

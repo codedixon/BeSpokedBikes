@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BeSpokedBikes.Models
 {
-    public class Sales
+    public class Sale
     {
+        [Required]
+        public int SaleId { get; set; }
         public Product Product { get; set; }
+        public int ProductId { get; set; }
         public Salesperson Salesperson { get; set; }
+        public int SalespersonId { get; set; }
         public Customer Customer { get; set; }
+        public int CustomerId { get; set; }
         public DateTime SalesDate { get; set; }
-        public List<Sales> allsales { get; set; }
+        public List<Sale> allsales { get; set; }
 
-        public Sales(Product product, Salesperson salesperson, Customer customer, DateTime salesdate)
+        public Sale(Product product, Salesperson salesperson, Customer customer, DateTime salesdate)
         {
             this.Product = product;
             this.Salesperson = salesperson;
@@ -22,14 +28,14 @@ namespace BeSpokedBikes.Models
             allsales.Add(this);
         }
 
-        public List<Sales> GetSales()
+        public List<Sale> GetSales()
         {
             return allsales;
         }
 
-        public Sales CreateSale(Product product, Salesperson salesperson, Customer customer)
+        public Sale CreateSale(Product product, Salesperson salesperson, Customer customer)
         {
-            Sales newsale = new Sales(product, salesperson, customer, DateTime.Now);
+            Sale newsale = new Sale(product, salesperson, customer, DateTime.Now);
             allsales.Add(newsale);
             return newsale;
         }

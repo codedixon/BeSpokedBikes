@@ -8,7 +8,7 @@ namespace BeSpokedBikes.Models
     public class Product
     {
         public static int NumberOfProducts { get; private set; } = 0;
-        public int id { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string Style { get; set; }
@@ -16,18 +16,22 @@ namespace BeSpokedBikes.Models
         public int SalePrice { get; set; }
         public int Quantity { get; set; }
         public decimal CommissionPercentage { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Discount> Discounts { get; set; }
+        public int DiscountId { get; set; }
         public Dictionary<string, int> Products { get; set; }
-        
+
+
         public Product(string Name, string Manufacturer, string Style, int PurchasePrice, int SalePrice, int Quantity, decimal CommissionPercentage)
         {
             if (!Products.ContainsKey(Name))
             {
                 NumberOfProducts++;
-                this.id = NumberOfProducts;
-                Products.Add(Name, this.id);
+                this.ProductId = NumberOfProducts;
+                Products.Add(Name, this.ProductId);
             } else
             {
-                this.id = Products[this.Name];
+                this.ProductId = Products[this.Name];
             }
 
             this.Name = Name;
