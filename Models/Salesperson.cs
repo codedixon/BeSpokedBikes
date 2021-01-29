@@ -46,6 +46,7 @@ namespace BeSpokedBikes.Models
 
         }
 
+
         public List<Salesperson> GetSalespeople()
         {
             return salespeople.ToList();

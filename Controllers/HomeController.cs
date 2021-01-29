@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BeSpokedBikes.Models;
+using Microsoft.Data.SqlClient;
 
 namespace BeSpokedBikes.Controllers
 {
@@ -18,7 +19,8 @@ namespace BeSpokedBikes.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+
+        public ActionResult Index()
         {
             return View();
         }
