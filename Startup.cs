@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using BeSpokedBikes.Models;
 
 namespace BeSpokedBikes
 {
@@ -26,8 +27,6 @@ namespace BeSpokedBikes
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ApplicationDbContext>(
-      options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

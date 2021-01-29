@@ -17,25 +17,16 @@ namespace BeSpokedBikes.Models
         public Customer Customer { get; set; }
         public int CustomerId { get; set; }
         public DateTime SalesDate { get; set; }
-        public List<Sale> allsales { get; set; }
+        public static List<Sale> allsales { get; set; }
 
-        public Sale(Product product, Salesperson salesperson, Customer customer, DateTime salesdate)
-        {
-            this.Product = product;
-            this.Salesperson = salesperson;
-            this.Customer = customer;
-            this.SalesDate = salesdate;
-            allsales.Add(this);
-        }
-
-        public List<Sale> GetSales()
+        public static List<Sale> GetSales()
         {
             return allsales;
         }
 
-        public Sale CreateSale(Product product, Salesperson salesperson, Customer customer)
+        public Sale CreateSale(int productid, int salespersonid, int customerid)
         {
-            Sale newsale = new Sale(product, salesperson, customer, DateTime.Now);
+            Sale newsale = new Sale {ProductId = productid, SalespersonId = salespersonid, CustomerId = customerid };
             allsales.Add(newsale);
             return newsale;
         }

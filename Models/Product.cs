@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,33 +9,28 @@ namespace BeSpokedBikes.Models
 {
     public class Product
     {
-        public static int NumberOfProducts { get; private set; } = 0;
+        public static int count = 1;
         public int ProductId { get; set; }
+
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Manufacturer { get; set; }
         public string Style { get; set; }
         public int PurchasePrice { get; set; }
+        [Required]
         public int SalePrice { get; set; }
         public int Quantity { get; set; }
-        public decimal CommissionPercentage { get; set; }
+        public double CommissionPercentage { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }
         public virtual ICollection<Discount> Discounts { get; set; }
         public int DiscountId { get; set; }
-        public Dictionary<string, int> Products { get; set; }
+        [NotMapped]
+        public static HashSet<string> Products { get; set; }
 
 
-        public Product(string Name, string Manufacturer, string Style, int PurchasePrice, int SalePrice, int Quantity, decimal CommissionPercentage)
+        public Product(string Name, string Manufacturer, string Style, int PurchasePrice, int SalePrice, int Quantity, double CommissionPercentage)
         {
-            if (!Products.ContainsKey(Name))
-            {
-                NumberOfProducts++;
-                this.ProductId = NumberOfProducts;
-                Products.Add(Name, this.ProductId);
-            } else
-            {
-                this.ProductId = Products[this.Name];
-            }
-
             this.Name = Name;
             this.Manufacturer = Manufacturer;
             this.Style = Style;
@@ -41,13 +38,17 @@ namespace BeSpokedBikes.Models
             this.SalePrice = SalePrice;
             this.Quantity = Quantity;
             this.CommissionPercentage = CommissionPercentage;
-            
+            Products.Add(Name);
             //Different manufacturers can sell the same product at different prices with different quantities, that's why I'm specifically only adding product names to this Dictionary
         }
 
-        public List<string> displayall()
+        public Product()
         {
-            return Products.Keys.ToList();
+
         }
+        //public List<string> displayall()
+        //{
+        //    return Products.Keys.ToList();
+        //}
     }
 }
