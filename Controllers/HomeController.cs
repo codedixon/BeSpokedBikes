@@ -22,6 +22,7 @@ namespace BeSpokedBikes.Controllers
 
         public ActionResult Index()
         {
+            ViewData["salespeople"] = Models.Salesperson.salespeople;
             return View();
         }
 

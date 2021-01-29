@@ -24,7 +24,7 @@ namespace BeSpokedBikes.Models
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-                => options.UseSqlite("Data Source=biking.db");
+                => options.UseSqlServer("Data Source=biking.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

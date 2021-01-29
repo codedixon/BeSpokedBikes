@@ -3,6 +3,7 @@ using System;
 using BeSpokedBikes.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeSpokedBikes.Migrations
@@ -14,32 +15,35 @@ namespace BeSpokedBikes.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseIdentityColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("BeSpokedBikes.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("CustomerId");
 
@@ -53,7 +57,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Rashaad",
                             LastName = "Dixon",
                             PhoneNumber = "7812431464",
-                            StartDate = new DateTime(1995, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(1996, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -62,7 +66,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Ron",
                             LastName = "Burgundy",
                             PhoneNumber = "5082531684",
-                            StartDate = new DateTime(2016, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2015, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -71,7 +75,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Mario",
                             LastName = "Kart",
                             PhoneNumber = "3454321111",
-                            StartDate = new DateTime(1995, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -80,7 +84,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Princess",
                             LastName = "Peach",
                             PhoneNumber = "5815431564",
-                            StartDate = new DateTime(2003, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -89,7 +93,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Luigi",
                             LastName = "Green",
                             PhoneNumber = "6818431964",
-                            StartDate = new DateTime(2015, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2013, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -98,7 +102,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Christopher",
                             LastName = "Paul",
                             PhoneNumber = "1812451462",
-                            StartDate = new DateTime(1998, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2009, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -107,7 +111,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Optimus",
                             LastName = "Prime",
                             PhoneNumber = "5812433465",
-                            StartDate = new DateTime(2001, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2002, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -116,7 +120,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Dasani",
                             LastName = "Water",
                             PhoneNumber = "7812434469",
-                            StartDate = new DateTime(2001, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(1998, 6, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -125,7 +129,7 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Canned",
                             LastName = "Soup",
                             PhoneNumber = "9812431484",
-                            StartDate = new DateTime(2001, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2004, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -134,26 +138,26 @@ namespace BeSpokedBikes.Migrations
                             FirstName = "Dr",
                             LastName = "Robotnik",
                             PhoneNumber = "4812331064",
-                            StartDate = new DateTime(2019, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(1999, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
             modelBuilder.Entity("BeSpokedBikes.Models.Discount", b =>
                 {
                     b.Property<int>("DiscountId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("DiscountPercentage")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("DiscountId");
 
@@ -164,33 +168,34 @@ namespace BeSpokedBikes.Migrations
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<double>("CommissionPercentage")
-                        .HasColumnType("REAL");
+                        .HasColumnType("float");
 
                     b.Property<int>("DiscountId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PurchasePrice")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("SalePrice")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Style")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductId");
 
@@ -323,19 +328,20 @@ namespace BeSpokedBikes.Migrations
                 {
                     b.Property<int>("SaleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("CustomerId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("SalesDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("SalespersonId")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("SaleId");
 
@@ -351,22 +357,70 @@ namespace BeSpokedBikes.Migrations
                         new
                         {
                             SaleId = 1,
-                            CustomerId = 3,
+                            CustomerId = 1,
+                            ProductId = 6,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 5
+                        },
+                        new
+                        {
+                            SaleId = 2,
+                            CustomerId = 8,
+                            ProductId = 7,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 3
+                        },
+                        new
+                        {
+                            SaleId = 3,
+                            CustomerId = 9,
+                            ProductId = 4,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 4
+                        },
+                        new
+                        {
+                            SaleId = 4,
+                            CustomerId = 5,
+                            ProductId = 5,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 1
+                        },
+                        new
+                        {
+                            SaleId = 5,
+                            CustomerId = 4,
                             ProductId = 6,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 6
                         },
                         new
                         {
-                            SaleId = 2,
+                            SaleId = 6,
                             CustomerId = 9,
-                            ProductId = 2,
+                            ProductId = 4,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 1
+                        },
+                        new
+                        {
+                            SaleId = 7,
+                            CustomerId = 2,
+                            ProductId = 3,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 5
+                        },
+                        new
+                        {
+                            SaleId = 8,
+                            CustomerId = 7,
+                            ProductId = 8,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 2
                         },
                         new
                         {
-                            SaleId = 3,
+                            SaleId = 9,
                             CustomerId = 8,
                             ProductId = 5,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -374,89 +428,41 @@ namespace BeSpokedBikes.Migrations
                         },
                         new
                         {
-                            SaleId = 4,
-                            CustomerId = 8,
-                            ProductId = 6,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 3
-                        },
-                        new
-                        {
-                            SaleId = 5,
-                            CustomerId = 7,
-                            ProductId = 8,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 2
-                        },
-                        new
-                        {
-                            SaleId = 6,
-                            CustomerId = 1,
-                            ProductId = 4,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 6
-                        },
-                        new
-                        {
-                            SaleId = 7,
-                            CustomerId = 7,
-                            ProductId = 2,
+                            SaleId = 10,
+                            CustomerId = 6,
+                            ProductId = 5,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 5
                         },
                         new
                         {
-                            SaleId = 8,
-                            CustomerId = 2,
-                            ProductId = 6,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 1
-                        },
-                        new
-                        {
-                            SaleId = 9,
-                            CustomerId = 4,
-                            ProductId = 4,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 6
-                        },
-                        new
-                        {
-                            SaleId = 10,
-                            CustomerId = 5,
-                            ProductId = 3,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 6
-                        },
-                        new
-                        {
                             SaleId = 11,
-                            CustomerId = 3,
-                            ProductId = 3,
+                            CustomerId = 7,
+                            ProductId = 8,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 1
+                            SalespersonId = 3
                         },
                         new
                         {
                             SaleId = 12,
-                            CustomerId = 5,
+                            CustomerId = 2,
                             ProductId = 4,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 4
+                            SalespersonId = 3
                         },
                         new
                         {
                             SaleId = 13,
-                            CustomerId = 8,
-                            ProductId = 2,
+                            CustomerId = 1,
+                            ProductId = 4,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 1
+                            SalespersonId = 3
                         },
                         new
                         {
                             SaleId = 14,
-                            CustomerId = 7,
-                            ProductId = 4,
+                            CustomerId = 3,
+                            ProductId = 8,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 5
                         },
@@ -464,49 +470,49 @@ namespace BeSpokedBikes.Migrations
                         {
                             SaleId = 15,
                             CustomerId = 1,
-                            ProductId = 8,
+                            ProductId = 3,
+                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SalespersonId = 3
+                        },
+                        new
+                        {
+                            SaleId = 16,
+                            CustomerId = 7,
+                            ProductId = 3,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 5
                         },
                         new
                         {
-                            SaleId = 16,
-                            CustomerId = 2,
+                            SaleId = 17,
+                            CustomerId = 1,
                             ProductId = 7,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SalespersonId = 6
                         },
                         new
                         {
-                            SaleId = 17,
+                            SaleId = 18,
                             CustomerId = 1,
                             ProductId = 6,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 3
-                        },
-                        new
-                        {
-                            SaleId = 18,
-                            CustomerId = 6,
-                            ProductId = 6,
-                            SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 3
+                            SalespersonId = 6
                         },
                         new
                         {
                             SaleId = 19,
-                            CustomerId = 1,
-                            ProductId = 6,
+                            CustomerId = 7,
+                            ProductId = 4,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 1
+                            SalespersonId = 2
                         },
                         new
                         {
                             SaleId = 20,
-                            CustomerId = 7,
-                            ProductId = 7,
+                            CustomerId = 2,
+                            ProductId = 5,
                             SalesDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SalespersonId = 4
+                            SalespersonId = 6
                         });
                 });
 
@@ -514,30 +520,31 @@ namespace BeSpokedBikes.Migrations
                 {
                     b.Property<int>("SalespersonId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Address")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Manager")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("TerminationDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("SalespersonId");
 
@@ -552,8 +559,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Mitt",
                             Manager = "Brady",
                             PhoneNumber = "7532221323",
-                            StartDate = new DateTime(1998, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(2006, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2002, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2015, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -563,8 +570,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Schmitt",
                             Manager = "Mahomes",
                             PhoneNumber = "1532221323",
-                            StartDate = new DateTime(1995, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(2006, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2020, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -574,8 +581,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Fitt",
                             Manager = "Manning",
                             PhoneNumber = "9532221323",
-                            StartDate = new DateTime(2007, 8, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(2007, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2007, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2012, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -585,8 +592,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Critt",
                             Manager = "Manning",
                             PhoneNumber = "8532221323",
-                            StartDate = new DateTime(2002, 12, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(2003, 7, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(1998, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2000, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -596,8 +603,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Bill",
                             Manager = "Rodgers",
                             PhoneNumber = "2532221323",
-                            StartDate = new DateTime(2007, 7, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(1997, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2005, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2004, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -607,8 +614,8 @@ namespace BeSpokedBikes.Migrations
                             LastName = "Phil",
                             Manager = "Jackson",
                             PhoneNumber = "4532521323",
-                            StartDate = new DateTime(2016, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TerminationDate = new DateTime(2017, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2012, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TerminationDate = new DateTime(2013, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

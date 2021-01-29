@@ -1,11 +1,11 @@
-﻿@model BeSpokedBikes.Models.Sale
+﻿@model BeSpokedBikes.Models.Salesperson
 
 @{
     ViewData["Title"] = "Sales";
-    var salelist = ViewData["pokemon"] as List<Sale>;
+    var salelist = ViewData["salespeople"] as List<Salesperson>;
 }
 
-<h1>Pokemon</h1>
+<h1>Salespeople</h1>
 
 <div>
 
@@ -16,15 +16,12 @@
             <th>Salesperson</th>
             <th>Commission Made</th>
         </tr>
-        @foreach (var poke in pokelist)
+        @foreach (var salesperson in salelist)
         {
 
             <tr>
-                <td><a class="nav-link text-dark" asp-area="" asp-controller="Poke" asp-action="Details" asp-route-id="@poke.id">@poke.id</a></td>
-                <td><a class="nav-link text-dark" asp-area="" asp-controller="Poke" asp-action="Details" asp-route-id="@poke.id">@poke.name</a></td>
-                <td><a class="nav-link text-dark" asp-area="" asp-controller="Poke" asp-action="Details" asp-route-id="@poke.id"><img src="@poke.sprites.front_default"></a></td>
-                <td>@foreach (var ability in @poke.abilities)
-                {@ability.ability.name<br />} </td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@salesperson.SalespersonId">@salesperson.SalespersonId</a></td>
+                <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@salesperson.SalespersonId">@salesperson.FirstName</a></td>
             </tr>
         }
     </table>
